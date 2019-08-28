@@ -1,0 +1,101 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width"/>
+    <title>_MasterLayout</title>
+    <link href="~/Scripts/bootstrap.min.css" rel="stylesheet"/>
+    <script src="~/Scripts/jquery-3.0.0.min.js"></script>
+    <link href="~/Scripts/StyleSheet.css" rel="stylesheet" />
+    <style>
+        a:link, a:visited {
+            background-color: gray;
+            color: white;
+            padding: 8px 8px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+
+        a:hover, a:active {
+            background-color: green;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        table, td, th {
+            border: 1px solid black;
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+
+    <div class="center2">
+        <div class="w3-container">
+            <h2 class="solid">University Management System</h2>
+
+
+            <div class="w3-bar w3-light-grey">
+
+                <div class="w3-dropdown-hover">
+                    @Html.ActionLink("Department", "Save", "Department")
+                    <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                        @Html.ActionLink("Department save", "Save", "Department")
+                        @Html.ActionLink("View All Departments", "ViewAllDepartments", "ViewAllDepartment")
+                    </div>
+                </div>
+                @Html.ActionLink("Save Course", "Save", "Course")
+
+                @Html.ActionLink("Teacher Save", "Save", "Teacher")
+
+                <div class="w3-dropdown-hover">
+                    @Html.ActionLink("Assign", "Assign", "CourseAssign")
+                    <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                        @Html.ActionLink("Course Assign To Teacher", "Assign", "CourseAssign")
+                        @Html.ActionLink("Viewe Course Statics", "CourseStatics", "Course")
+                    </div>
+                </div>
+
+                @Html.ActionLink("Register Student", "Save", "Student")
+
+                @Html.ActionLink("Allocate Classroom", "Allocate", "AllocateClassroom")
+
+                @Html.ActionLink("View Routine", "ViewSchedule", "AllocateClassroom")
+
+                @Html.ActionLink("Student Enroll", "EnrollSave", "EnrollCourse")
+
+                <div class="w3-dropdown-hover">
+                    @Html.ActionLink("Result", "SaveResult", "Result")
+                    <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                        @Html.ActionLink("Result Save", "SaveResult", "Result")
+                        @Html.ActionLink("View Result", "ViewResult", "ViewResult")
+                    </div>
+                </div>
+
+                <div class="w3-dropdown-hover">
+                    @Html.ActionLink("Unassign", "Unassing", "Unassign")
+                    <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                        @Html.ActionLink("Unassign All Courses", "Unassing", "Unassign")
+                        @Html.ActionLink("Unassign All Classrooms", "UnassignClassRoom", "Unassign")
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        @RenderBody()
+    </div>
+    
+
+</body>
+</html>

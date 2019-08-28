@@ -1,0 +1,103 @@
+﻿@using UniversityRegistrationSystemApp.Model
+@model ClassRoom
+@{
+    ViewBag.Title = "ViewSchedule";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+    List<Department> DepartmentList = ViewBag.DepartmentList;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ViewSchedule</title>
+    <link href="~/Scripts/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Scripts/StyleSheet1.css" rel="stylesheet" />
+</head>
+<body>
+<form id="viewschedule" method="POST">
+    <div class="center"><h3>View Schedule</h3></div>
+
+    <table class="center1">
+
+        <tr>
+            <td><label for="DepartmentId">Department</label></td>
+            <td>
+                <select id="DepartmentId" name="DepartmentId">
+                    <option value="">Department</option>
+                    @foreach (Department department in DepartmentList)
+                    {
+                        <option value="@department.Id">@department.Name</option>
+                    }
+                </select>
+                @Html.ValidationMessageFor(x => x.DepartmentId)
+            </td>
+        </tr>
+
+    </table>
+
+    <table class="center1">
+
+        <thead id="tableHead">
+
+        </thead>
+        <tbody id="tableBody"></tbody>
+    </table>
+
+</form>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+<script>
+
+    $(document).ready(function() {
+
+        $("#DepartmentId").change(function() {
+            var deptId = $("#DepartmentId").val();
+            var json = { CLid: deptId };
+            $("#tableHead").empty();
+
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("GetScheduleInfoByDeptmentId", "AllocateClassroom")',
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(json),
+                success: function(data) {
+                    $("#tableBody").empty();
+                    $("#tableHead").empty();
+
+                    $("#tableHead").append('<tr> <th>Code</th> <th>Name/Title</th> <th>Schedule Info</th></tr>');
+                    $.each(data, function(key, value) {
+                        $("#tableBody").append('<tr> <td>' + value.CoureCode + '</td> <td>' + value.Name + '</td> <td>' + value.ScheduleInfo + '</td></tr>');
+                    });
+                }
+            });
+        });
+    });
+</script>
+
+    <script>
+        $("#viewschedule").validate({
+            rules: {
+                DepartmentId: {
+                    required: true,
+                    rangelength: [2, 7]
+                }
+
+
+
+            },
+
+            messages: {
+                DepartmentId: "Please enter Department Name"
+            }
+
+        });
+
+    </script>
+
+
+</body>
+</html>

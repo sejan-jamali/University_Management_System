@@ -1,0 +1,180 @@
+﻿@using UniversityRegistrationSystemApp.Model
+@model Student
+@{
+    ViewBag.Title = "Save";
+    Layout = "~/Views/Shared/_Bootstrap.cshtml";
+    List<Department> departments = ViewBag.Departments;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student</title>
+    @*<link href="~/Content/bootstrap.min.css" rel="stylesheet" />*@
+    <link href="~/Content/bootstrap3.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-datepicker.min.css" rel="stylesheet" />
+    <link href="~/Scripts/StyleSheet1.css" rel="stylesheet" />
+    <style>
+        #registerform label.error {
+            margin-left: 10px;
+            width: auto;
+            display: inline;
+            color: red;
+        }
+    </style>
+
+    @*<link href="~/Scripts/bootstrap.min.css" rel="stylesheet" />*@
+    <link href="~/Content/bootstrap3.min.css" rel="stylesheet" />
+    <link href="~/Scripts/datepicker.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/bootstrap-datepicker.js"></script>
+    <link href="~/Scripts/StyleSheet1.css" rel="stylesheet" />
+    <script>
+        $(function() {
+            $('#Date').datepicker({
+                'format': 'yyyy-mm-dd',
+                'autoclose': true
+            });
+        })
+    </script>
+    <link href="~/Scripts/StyleSheet1.css" rel="stylesheet" />
+</head>
+<body>
+
+    <div class="center"><h3>Save Student</h3></div>
+
+<form id="registerform" method="POST">
+    <table class="center1">
+        <tr>
+            <td>
+                <label for="Name">Name</label>
+            </td>
+            <td>
+                <input id="Name" name="Name" type="text"/>
+                @Html.ValidationMessageFor(x => x.Name)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <label for="Email">Email</label>
+            </td>
+            <td>
+                <input id="Email" name="Email" type="text"/>
+                @Html.ValidationMessageFor(x => x.Email)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <label for="ContactNo">Contact No.</label>
+            </td>
+            <td>
+                <input id="ContactNo" name="ContactNo" type="text"/>
+                @Html.ValidationMessageFor(x => x.ContactNo)
+            </td>
+        </tr>
+
+        <tr>
+            <td >
+                <label for="Date">Date</label>
+            </td>
+            <td>
+                <input autocomplete="off" id="Date" class="datepicker" type="text" name="Date"/>
+                @Html.ValidationMessageFor(x => x.Date)
+
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <label for="Address">Address</label>
+            </td>
+            <td>
+                <input id="Address" name="Address" type="text"/>
+                @Html.ValidationMessageFor(x => x.Address)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <label for="DepartmentId">Department</label>
+            </td>
+            <td>
+                <select id="DepartmentId" name="DepartmentId">
+                    <option value="">--Select--</option>
+                    @foreach (Department department in departments)
+                    {
+                        <option value="@department.Id">@department.Name</option>
+                    }
+                </select>
+                @Html.ValidationMessageFor(x => x.DepartmentId)
+            </td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit"/>
+            </td>
+        </tr>
+    </table>
+
+    @if (ViewBag.Message != null)
+    {
+        <h3>@ViewBag.Message</h3>
+    }
+</form>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+@*<script src="~/Scripts/bootstrap.min.js"></script>*@
+    <link href="~/Content/bootstrap3.min.css" rel="stylesheet" />
+<script src="~/Scripts/bootstrap-datepicker.min.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+
+
+    
+    <script>
+        $("#registerform").validate({
+            rules: {
+                Name: {
+                    required: true
+                },
+                Email: {
+                    required: true
+                    
+                },
+                ContactNo: {
+                    required: true
+                },
+                Date: {
+                    required: true
+                    
+                },
+
+                Address: {
+                    required: true
+                },
+
+                DepartmentId: {
+                    required: true
+                }
+
+
+
+            },
+
+            messages: {
+                Name: "Please enter Name",
+                Email: "Please enter Email",
+                ContactNo: "Please enter Contact No",
+                Date: "Please enter Dat",
+                Address: "Please enter Address",
+                DepartmentId: "Please enter Department"
+            }
+
+        });
+
+    </script>
+</body>
+</html>

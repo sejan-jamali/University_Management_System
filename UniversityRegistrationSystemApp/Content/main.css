@@ -1,0 +1,42 @@
+.navbar-header{
+    color: darkseagreen;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+    color: #0de028f2;
+}
+
+.section-title.text-center {
+    margin-bottom: 30px;
+}
+
+
+element {
+
+}
+.icon.text-center {
+
+    background: #0bf07666;
+    padding: 4px 3px;
+    padding-left: 0px;
+
+}
+
+.carousel-inner > .item > img {
+    line-height: 1;
+    height: 350px;
+}
+
+.map-section iframe {
+
+    border: none;
+    height: 330px;
+    width: 650px;
+
+}
+
+.footer {
+
+    background-color: #b3b4d4;
+
+}

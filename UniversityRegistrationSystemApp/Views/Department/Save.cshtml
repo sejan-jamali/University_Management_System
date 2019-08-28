@@ -1,0 +1,89 @@
+﻿@model UniversityRegistrationSystemApp.Model.Department
+@{
+    ViewBag.Title = "Save";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Department</title>
+    <link href="~/Scripts/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Scripts/StyleSheet1.css" rel="stylesheet" />
+    <style>
+        #DepEntryForm label.error {
+            margin-left: 10px;
+            width: auto;
+            display: inline;
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="center"><h3>Save Department</h3></div>
+<form id="DepEntryForm" method="POST">
+
+    <table class="center1">
+        <tr>
+            <td>
+                <label for="Name">Name</label>
+            </td>
+            <td>
+                <input id="Name" name="Name" type="text"/>
+                @Html.ValidationMessageFor(x => x.Name)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <label for="Code">Code</label>
+                @Html.ValidationMessageFor(x => x.Code)
+            </td>
+            <td>
+                <input id="Code" name="Code" type="text"/>
+            </td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit"/>
+            </td>
+        </tr>
+    </table>
+
+    @if (ViewBag.Message != null)
+    {
+        <h3>@ViewBag.Message</h3>
+    }
+
+</form>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+
+<script>
+    $("#DepEntryForm").validate({
+        rules: {
+            Name: {
+                required: true
+            },
+
+            Code: {required:true,
+                rangelength: [2, 7]}
+        },
+
+        messages: {
+            Name: "Please enter Department Name",
+            Code: "Please enter Department Code"
+        }
+
+    });
+
+</script>
+</body>
+
+</html>

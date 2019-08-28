@@ -1,0 +1,48 @@
+﻿
+        /*.auto-style1 {
+            text-align: justify;
+        }*/
+
+        /*h1 {
+            color: black;
+            text-align: center;
+        }*/
+
+        body {
+            background-color: lightblue;
+        }
+
+        .center {
+            text-align: center;
+            margin: auto;
+            width: 35%;
+            border: 3px solid #73AD21;
+            padding: 10px;
+            position: relative;
+        }
+
+        .center1 {
+            text-align: center;
+            margin: auto;
+            width: 33%;
+            padding: 10px;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        table, td, th {
+            border: 1px solid black;
+        }
+
+        .center2 {
+            text-align: center;
+            margin: auto;
+            width: auto;
+            border: 7px solid #73AD21;
+            padding: 10px;
+            position: relative;
+        }
+
+        

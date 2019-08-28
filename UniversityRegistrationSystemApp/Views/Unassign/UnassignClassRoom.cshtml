@@ -1,0 +1,29 @@
+﻿@using UniversityRegistrationSystemApp.Model
+@model ClassRoom
+@{
+    ViewBag.Title = "UnassingClassRoom";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Unassign</title>
+    <link href="~/Scripts/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Scripts/StyleSheet1.css" rel="stylesheet" />
+</head>
+<body>
+
+    <div class="center"><h3>Unassign Classroom</h3></div>
+
+<form method="POST">
+    <input type="submit" value="Unassign ClassRoom" onclick="return confirm('Sure to unasign?')" />
+    @if (ViewBag.Message != null)
+    {
+        <h3>@ViewBag.Message</h3>
+    }
+</form>
+
+
+</body>
+</html>
